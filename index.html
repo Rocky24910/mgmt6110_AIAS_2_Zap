@@ -131,7 +131,30 @@
   <p><strong>4. It must never:</strong> Send notifications to anyone else; the Gmail Send Email To field is fixed to my personal test account.</p>
   <p><strong>5. Where a person checks:</strong> The student reviews each alert and its original message in Gmail after delivery.</p>
 </section>
-  
+
+<section id="ps5-analysis" style="margin:24px 0;padding:24px;border:1px solid var(--rule);background:var(--sheet);border-radius:12px;">
+  <div class="kicker">MGMT 6110 · Problem Set 5 · Analysis</div>
+  <h2 style="font-family:var(--serif);font-weight:400;margin:12px 0;">Where the human stays in the loop</h2>
+
+  <h3 style="font-family:var(--serif);font-weight:400;">Q1. Map placement and justification</h3>
+  <p><strong>(a) My quadrant: AI alone, with checks (bottom left).</strong> School Mail Sentinel uses a Gmail search trigger to detect incoming messages whose subjects match <code>subject:PS5-URGENT</code>, then sends a notification to my personal test inbox.</p>
+  <p><strong>(b) The map's two questions.</strong> The task has a verifiable right answer: the email either matches the search condition or it does not. Either a person or an automated workflow can perform this screening task alone. My live tests recorded three successful initial runs, and the post-fix run successfully included the original email subject in the alert. The body-only tricky case did not create a new Zap History run during my observation period, consistent with the subject-based search condition.</p>
+  <p><strong>(c) The person in the loop.</strong> The agent may detect matching messages and send alerts automatically. I remain responsible for opening the original email, checking its context and deciding what action to take. The agent must not reply to, forward or delete messages. If it began interpreting ambiguous requests or recommending actions that require judgement, I would reconsider its placement because human judgement would become more central.</p>
+  <p><strong>(d) My group's view.</strong> I agree with the group's bottom-left placement for the school email alert task: it has a clear matching rule and can be automated. However, automation does not remove human accountability. The person still reviews the original email, and the run history provides evidence for spot-checking. The task's placement describes the screening work, not the entire process of deciding how to respond to a school email.</p>
+
+  <h3 style="font-family:var(--serif);font-weight:400;margin-top:22px;">Human–AI collaboration log</h3>
+  <ul>
+    <li><strong>Delegated to AI:</strong> I used ChatGPT to plan the two-step workflow, draft the Agent Card, explain the Gmail search trigger, and prepare the analysis and test plan.</li>
+    <li><strong>What I checked:</strong> I configured the Zap myself, reviewed the trigger and action test results, checked the successful Zap History records, and inspected the delivered alert emails.</li>
+    <li><strong>Issue identified and corrected:</strong> The initial notification body was generic and did not identify the triggering email. I mapped the Gmail trigger's dynamic Subject field into the body, published a new version, and verified that the alert displayed “PS5-URGENT Fix Verification E”.</li>
+    <li><strong>Tricky case:</strong> I sent a message with “Weekly Lecture Notes” as the subject and “PS5-URGENT” in the body. No new run appeared during my observation period. This was consistent with the subject-only search rule; it is evidence from this test, not a guarantee that every possible edge case is handled.</li>
+    <li><strong>Time and cost:</strong> I worked through setup, testing, and documentation during this assignment session. Zapier displayed a seven-day Professional trial notice, so I cannot claim that all activity occurred on the Free plan. No separate payment was made during the work documented here.</li>
+  </ul>
+
+  <h3 style="font-family:var(--serif);font-weight:400;margin-top:22px;">Three-sentence reflection</h3>
+  <p>School Mail Sentinel fits “AI alone, with checks” because its email-matching task has a clear rule and can run without a person handling each message. Its main limitation is that a successful notification does not determine the importance of the email or decide what the student should do, and the initial generic message also lacked useful context. I improved the workflow by adding the original email subject to the alert, and I would next test more edge cases and verify the plan's eligibility before relying on it for ongoing use.</p>
+</section>
+
   <div class="bar" id="filters">
     <button class="on" data-f="all">All</button>
     <button data-f="farm"><span class="swatch farm"></span>Modern farm</button>
