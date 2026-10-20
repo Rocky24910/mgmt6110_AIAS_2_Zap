@@ -223,7 +223,7 @@ const TASKS = [
   { b: "jewel", q: "tl", t: "Write product pages with exact metal and carat specs", why: "Specs like 18k gold or 0.5 ct must be exactly right; the jeweller leads and AI drafts the copy around their facts." },
   { b: "jewel", q: "tr", t: "Test ad and photo variants", why: "No single best ad; agents generate and A/B-test variants, the jeweller judges which fit the brand." },
   { b: "jewel", q: "br", t: "Price a custom or new-collection necklace", why: "Pricing mixes craft, brand and margin; AI shows comparable prices and metal costs, the jeweller sets the price." },
-  { b: "sentinel", q: "bl", t: "Alert me when school email mentions MBAI or my professors", why: "Whether an email names MBAI, a professor or me has one right answer, and a student could scan the inbox by hand. The agent does it alone and cannot reply, forward or delete; the 7 pm digest and a weekly look at Zap History are the checks." },
+  { b: "sentinel", q: "bl", t: "Alert me when an email subject contains PS5-URGENT", why: "The Gmail trigger searches for emails whose subjects match subject:PS5-URGENT. The agent sends an alert to the student's test inbox. The student checks the original email and decides what to do. The agent must not reply, forward or delete messages." },
 ];
 
 const $ = (id) => document.getElementById(id);
@@ -324,6 +324,7 @@ $("tour").onclick = tour;
 $("all").onclick = () => TASKS.forEach((_, i) => place(i));
 $("clear").onclick = clearAll;
 render();
+place(TASKS.length - 1);
 </script>
 </body>
 </html>
